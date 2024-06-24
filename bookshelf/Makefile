@@ -26,5 +26,11 @@ cli:
 	docker compose run web /bin/sh -c "bundle exec hanami --help"
 
 b:
-	docker compose run web /bin/sh -c "cd bookshelf && bundle exec hanami dev"
+	docker compose run web /bin/sh -c "bundle exec hanami dev"
+
+routes:
+	docker compose run web /bin/sh -c "bundle exec hanami routes"
+
+middle:
+	docker compose run web /bin/sh -c "bundle exec hanami middleware"
 
