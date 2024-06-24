@@ -2,7 +2,7 @@
 
 require "dry/types"
 
-module Bookshelf
+module Eco
   Types = Dry.Types
 
   module Types

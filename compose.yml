@@ -1,11 +1,13 @@
 services:
   web:
     build: .
+    #  docker compose run web guard init-rspec
+
     command: hanami server --host=0.0.0.0
     ports:
       - 2300:2300
     volumes:
-      - $PWD:/app
+      - ./:/usr/local/app
     depends_on:
       - db
 
@@ -15,3 +17,5 @@ services:
       - 5432:5432
     environment:
       POSTGRES_PASSWORD: example
+
+
