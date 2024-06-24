@@ -34,3 +34,6 @@ routes:
 middle:
 	docker compose run web /bin/sh -c "bundle exec hanami middleware"
 
+rspec:
+	docker compose run rspec /bin/sh -c "bundle exec rspec spec/requests/root_spec.rb"
+
