@@ -30,7 +30,7 @@ WORKDIR /usr/local/app
 COPY . /usr/local/app
 RUN bundle install -j $(nproc) 
 #--quiet
-RUN bundle exec hanami install
+#RUN bundle exec hanami install
 #RUN bundle exec guard init
 
 EXPOSE 2300

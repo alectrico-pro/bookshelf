@@ -1,8 +1,6 @@
 services:
-  web:
+  web: 
     build: .
-    #  docker compose run web guard init-rspec
-
     command: hanami server --host=0.0.0.0
     ports:
       - 2300:2300
@@ -11,10 +9,8 @@ services:
     depends_on:
       - db
 
-  new:
+  new: 
     build: .
-    #  docker compose run web guard init-rspec
-
     command: hanami new Bookshelf
     ports:
       - 2300:2300
