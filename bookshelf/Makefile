@@ -4,9 +4,9 @@ build:
 new:
 	docker compose run new
 
-
 run:
 	docker compose run web
+
 dev:
 	docker compose run rspec /bin/sh -c "bundle exec  hanami dev"
 
@@ -62,5 +62,15 @@ image:
 	docker build -t simple-api -f Dockerfile .
 
 
-migrate:
+migration:
 	docker compose run web bash -c "bundle exec rake db:create_migration[create_books]"
+
+
+migrate:
+	docker compose run web bash -c "bundle exec rake db:migrate"
+
+migrate_test:
+	docker compose run web bash -c "HANAMI_ENV=test bundle exec rake db:migrate"
+
+
+
