@@ -4,6 +4,9 @@ source "https://rubygems.org"
 
 ruby '3.0.5'
 
+gem "rom", "~> 5.3"
+gem "rom-sql", "~> 3.6"
+gem "pg"
 gem "foreman"
 gem "hanami", "~> 2.1"
 gem "hanami-assets", "~> 2.1"
@@ -34,4 +37,8 @@ end
 
 group :cli, :development, :test do
   gem "hanami-rspec", "~> 2.1"
+end
+
+group :test do
+  gem "database_cleaner-sequel"
 end

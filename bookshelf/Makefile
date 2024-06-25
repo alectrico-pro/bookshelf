@@ -47,3 +47,20 @@ unfrozen:
 host:
 	docker network inspect bookshelf_rspec
 
+#requiere docker compose run db
+create_db:
+	docker compose exec db psql -U postgres
+	CREATE DATABASE bookshelf_api_development;
+
+
+create_db_test:
+	docker compose exec db_test psql -U postgres
+	CREATE DATABASE bookshelf_api_test;
+
+
+image:
+	docker build -t simple-api -f Dockerfile .
+
+
+migrate:
+	docker compose run web bash -c "bundle exec rake db:create_migration[create_books]"

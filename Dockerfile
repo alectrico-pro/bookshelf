@@ -24,13 +24,13 @@ RUN apt-get install -y --no-install-recommends \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN npm install -g yarn
+#RUN bundle exec hanami install
 
 
 WORKDIR /usr/local/app
 COPY . /usr/local/app
 RUN bundle install -j $(nproc) 
 #--quiet
-RUN bundle exec hanami install
 #RUN bundle exec guard init
 
 EXPOSE 2300

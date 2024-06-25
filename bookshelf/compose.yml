@@ -1,56 +1,57 @@
+#https://www.useo.pl/blog/2023/03/setting-up-hanami-and-postgres-with-docker-compose
+
 volumes:
-  web:
+  postgres-data-db:
+  postgres-data-test:
 
 networks:
-  rspec:
   web:
-
+  test:
 
 services:
   web: &web
-    build: .
-    command: hanami server --host=0.0.0.0
-    ports:
-      - 2300:2300
+    image: simple-api
+    command: hanami server
+    env_file: .env.development
     volumes:
       - ./:/usr/local/app
-      - ./hanami_log:/usr/src/app/hanami_log
     depends_on:
-      - db_rspec
+      - db
     networks:
-      - rspec
-
+      - web
 
   rspec: 
     <<: *web
-    command: hanami server --host=0.0.0.0
+    env_file: .env.test
     volumes:
       - ./:/usr/local/app
-      - ./hanami_log:/usr/src/app/hanami_log
     depends_on:
-      - db_rspec
+      - db_test
     networks:
-      - rspec
+      - test
 
-
-
-  db_rspec:
-    image: postgres:10.4-alpine
-    ports:
-      - 5433:5432
-    environment:
-      POSTGRES_PASSWORD: example
-    networks:
-      - rspec
-
-      
   db:
     image: postgres:10.4-alpine
     ports:
       - 5432:5432
     environment:
       POSTGRES_PASSWORD: example
+    volumes:
+      - postgres-data-db:/var/lib/postgresql/data
     networks:
       - web
+
+  db_test:
+    image: postgres:10.4-alpine
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - postgres-data-test:/var/lib/postgresql/data
+    networks:
+      - test
+
+      
 
         
