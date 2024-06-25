@@ -79,6 +79,7 @@ GEM
       zeitwerk (~> 2.6)
     erubi (1.13.0)
     ffi (1.17.0)
+    foreman (0.88.1)
     formatador (1.1.0)
     guard (2.18.1)
       formatador (>= 0.2.4)
@@ -214,6 +215,7 @@ DEPENDENCIES
   capybara
   dotenv
   dry-types (~> 1.0, >= 1.6.1)
+  foreman
   guard
   guard-puma
   hanami (~> 2.1)

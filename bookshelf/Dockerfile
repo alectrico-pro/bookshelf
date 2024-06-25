@@ -1,3 +1,5 @@
+#https://stackoverflow.com/questions/74101892/user-in-docker-cant-create-folders-and-files
+#Este es otro ejemplo, no el de Kadyrov
 FROM ruby:3.0.5-slim
 MAINTAINER Alexander Kadyrov <gruz0.mail@gmail.com>
 

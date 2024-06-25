@@ -8,7 +8,7 @@ new:
 run:
 	docker compose run web
 dev:
-	docker compose run web /bin/sh -c "bundle exec  hanami dev"
+	docker compose run rspec /bin/sh -c "bundle exec  hanami dev"
 
 server:
 	docker compose run web /bin/sh -c "bundle exec hanami server"
@@ -20,7 +20,7 @@ console:
 	docker compose run web /bin/sh -c "bundle exec hanami console"
 
 compile:
-	docker compose run web /bin/sh -c "bundle exec hanami assets compile"
+	docker compose run rspec /bin/sh -c "bundle exec hanami assets compile"
 
 cli:
 	docker compose run web /bin/sh -c "bundle exec hanami --help"
@@ -36,4 +36,14 @@ middle:
 
 rspec:
 	docker compose run rspec /bin/sh -c "bundle exec rspec spec/requests/root_spec.rb"
+
+
+watch:
+	docker compose run rspec /bin/sh -c "bundle exec hanami assets watch"
+
+unfrozen:
+	docker compose run rspec /bin/sh -c "bundle config unset frozen"
+
+host:
+	docker network inspect bookshelf_rspec
 
