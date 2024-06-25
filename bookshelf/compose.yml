@@ -7,7 +7,7 @@ networks:
 
 
 services:
-  web: 
+  web: &web
     build: .
     command: hanami server --host=0.0.0.0
     ports:
@@ -21,8 +21,8 @@ services:
       - rspec
 
 
-  rspec:
-    build: .
+  rspec: 
+    <<: *web
     command: hanami server --host=0.0.0.0
     volumes:
       - ./:/usr/local/app

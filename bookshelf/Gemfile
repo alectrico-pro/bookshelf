@@ -12,6 +12,7 @@ gem "hanami-view", "~> 2.1"
 gem "dry-types", "~> 1.0", ">= 1.6.1"
 gem "puma"
 gem "rake"
+gem "foreman"
 
 group :development do
   gem "hanami-webconsole", "~> 2.1"
@@ -21,7 +22,6 @@ end
 
 group :development, :test do
   gem "dotenv"
-  gem "foreman"
 end
 
 group :cli, :development do

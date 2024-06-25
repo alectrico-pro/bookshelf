@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe "Root", type: :request do
-  it "is not found" do
+  it "is successful" do
     get "/"
 
     # Generate new action via:

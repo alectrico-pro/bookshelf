@@ -5,6 +5,7 @@ module Bookshelf
     module Home
       class Show < Bookshelf::Action
         def handle(request, response)
+          response.body = "Welcome to Bookshelf"
         end
       end
     end
