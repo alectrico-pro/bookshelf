@@ -4,4 +4,6 @@ build:
 new:
 	docker compose run new
 
+web:
+	docker compose run web
 

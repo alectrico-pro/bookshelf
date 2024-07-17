@@ -5,6 +5,7 @@ module Bookshelf
     module Books
       class Index < Bookshelf::Action
         include Deps["persistence.rom"]
+
         def handle(*, response)
           books = rom.relations[:books]
             .select(:title, :author)
