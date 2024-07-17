@@ -4,14 +4,12 @@ module Bookis
   module Actions
     module Books
       class Index < Bookis::Action
+        include Deps["repos.book_repo"]
         def handle(request, response)
-          books = [
-            {title: "Test Driven Development"},
-            {title: "Practical Object-Oriented Design in Ruby"}
-          ]
-
+          books = book_repo.all_by_title( page: request.params[:page] || 1,
+                                         per_page: request.params[:per_page] || 5)
           response.format = :json
-          response.body = books.to_json
+          response.body = books.map(&:to_h).to_json
         end
       end
     end
