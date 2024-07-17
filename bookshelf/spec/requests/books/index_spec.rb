@@ -1,5 +1,6 @@
 RSpec.describe "GET /books", type: [:request, :database] do
-  let(:books) { app["persistence.rom"].relations[:books] }
+# let(:books) { app["persistence.rom"].relations[:books] }
+  let(:books) { Hanamai.app["relations.books"] }
 
   before do
     books.insert(title: "Practical Objecte-Oriented Design in Ruby", author: "Sandi Metz")

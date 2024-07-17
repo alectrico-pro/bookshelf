@@ -1,4 +1,10 @@
-FROM ruby:3.1.5-slim
+#https://stackoverflow.com/questions/74101892/user-in-docker-cant-create-folders-and-files
+#Este es otro ejemplo, no el de Kadyrov
+FROM ruby:3.0.5-slim
+MAINTAINER Alexander Kadyrov <gruz0.mail@gmail.com>
+
+#UN apk add --no-cache build-base postgresql postgresql-dev libpq
+
 RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
     build-essential \
     gnupg2 \
@@ -25,6 +31,9 @@ RUN npm install -g yarn
 WORKDIR /usr/local/app
 COPY . /usr/local/app
 RUN bundle install -j $(nproc) 
+#--quiet
+#RUN bundle exec hanami install
+#RUN bundle exec guard init
 
 EXPOSE 2300
 ENTRYPOINT ["bundle", "exec"]

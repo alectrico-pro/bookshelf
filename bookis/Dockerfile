@@ -21,9 +21,10 @@ RUN apt-get install -y --no-install-recommends \
 
 RUN npm install -g yarn
 
-
 WORKDIR /usr/local/app
 COPY . /usr/local/app
+#RUN bundler update
+
 RUN bundle install -j $(nproc) 
 
 EXPOSE 2300

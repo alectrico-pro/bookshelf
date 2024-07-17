@@ -1,4 +1,4 @@
-FROM ruby:3.0.5-slim
+FROM ruby:3.1.5-slim
 MAINTAINER Alexander Kadyrov <gruz0.mail@gmail.com>
 
 #UN apk add --no-cache build-base postgresql postgresql-dev libpq
@@ -28,8 +28,14 @@ RUN npm install -g yarn
 
 
 WORKDIR /usr/local/app
-COPY . /usr/local/app
-RUN bundle install -j $(nproc) 
+#COPY . /usr/local/app
+#UN gem install hanami -v 2.2.beta01
+#UN gem install hanami -v 2.2.beta01 
+
+#RUN bundle install -j $(nproc)
+
+RUN gem install hanami -v 2.2.beta01
+RUN hanami new bookis
 #--quiet
 #RUN bundle exec guard init
 

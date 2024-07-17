@@ -1,8 +1,12 @@
 build:
 	docker compose build web
 
-new:
-	docker compose run new
+new_bookis:
+	docker compose run new_bookis
+
+new_bookshelf:
+	docker compose run new_bookshelf
+
 
 web:
 	docker compose run web

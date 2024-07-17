@@ -1,5 +1,5 @@
 #https://www.useo.pl/blog/2023/03/setting-up-hanami-and-postgres-with-docker-compose
-
+#
 volumes:
   postgres-data-db:
   postgres-data-test:
@@ -9,15 +9,12 @@ networks:
   test:
 
 services:
-
   web: &web
-    image: simple-api
+    build: .
     command: hanami server
     env_file: .env.development
     volumes:
       - ./:/usr/local/app
-      - ./Gemfile.v2.2.0.beta1/:/usr/local/app/Gemfile
-  
     depends_on:
       db:
        condition: service_healthy
@@ -36,7 +33,6 @@ services:
     env_file: .env.test
     volumes:
       - ./:/usr/local/app
-      - ./Gemfile.v2.2.0.beta1/:/usr/local/app/Gemfile
     stdin_open: true
     tty: true
     depends_on:
@@ -45,7 +41,8 @@ services:
     networks:
       - test
     command:
-      - hanami console
+      - rspec
+        #      - hanami console
 
   db:
     image: postgres:10.4-alpine
