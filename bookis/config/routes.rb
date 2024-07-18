@@ -6,5 +6,7 @@ module Bookis
     # Add your routes here. See https://guides.hanamirb.org/routing/overview/ for details.
     get "/home/:id", to: "home.show"
     get "/books", to: "books.index"
+    get "/books/:id", to: "books.show"
+    post "/books", to: "books.create"
   end
 end

@@ -1,5 +1,5 @@
-RSpec.describe "GET /books pagination", type [:request, :db]  do
-  let(:book) { Hanami.app["relations.books"] }
+RSpec.describe "GET /books pagination", type: [:request, :db]  do
+  let(:books) { Hanami.app["relations.books"] }
 
   before do
     10.times do |n|

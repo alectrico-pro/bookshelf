@@ -3,6 +3,10 @@
 module Bookis
   module Repos
     class BookRepo < Bookis::DB::Repo
+      def create(attributes)
+        books.changeset(:create, attributes).commit
+      end
+
       def all_by_title(page:, per_page:)
         books
           .select(:title, :author)
