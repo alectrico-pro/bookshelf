@@ -7,6 +7,10 @@ module Bookis
         books.changeset(:create, attributes).commit
       end
 
+      def get(id)
+        books.by_pk(id).one!
+      end
+
       def all_by_title(page:, per_page:)
         books
           .select(:title, :author)
